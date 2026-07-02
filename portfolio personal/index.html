@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CraftFolio — A Minecraft Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ========== LOADING SCREEN ========== -->
+  <div id="loading-screen">
+    <div class="loading-inner">
+      <div class="mc-logo">⛏️</div>
+      <h1 class="loading-title">CRAFTFOLIO</h1>
+      <div class="loading-bar-wrap">
+        <div class="loading-bar" id="loading-bar"></div>
+      </div>
+      <p class="loading-text" id="loading-text">Loading world...</p>
+    </div>
+  </div>
+
+  <!-- ========== CURSOR ========== -->
+  <div class="mc-cursor" id="mc-cursor"></div>
+  <div class="mc-cursor-trail" id="cursor-trail"></div>
+
+  <!-- ========== PARTICLES ========== -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav id="navbar">
+    <div class="nav-logo">
+      <span class="pixel-icon">⛏️</span>
+      <span class="nav-brand">CraftFolio</span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#hero" class="nav-link" data-section="hero">🏠 Spawn</a></li>
+      <li><a href="#about" class="nav-link" data-section="about">📜 About</a></li>
+      <li><a href="#skills" class="nav-link" data-section="skills">⚔️ Skills</a></li>
+      <li><a href="#projects" class="nav-link" data-section="projects">🏙️ Projects</a></li>
+      <li><a href="#contact" class="nav-link" data-section="contact">📬 Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">☰</button>
+  </nav>
+
+  <!-- ========== HERO SECTION ========== -->
+  <section id="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-content">
+      <div class="hero-character" id="hero-char">
+        <div class="char-sprite" id="char-sprite">
+          <!-- Minecraft character built in CSS -->
+          <div class="char-head">
+            <div class="face"></div>
+          </div>
+          <div class="char-body">
+            <div class="char-arm left-arm"></div>
+            <div class="char-torso"></div>
+            <div class="char-arm right-arm"></div>
+          </div>
+          <div class="char-legs">
+            <div class="char-leg"></div>
+            <div class="char-leg"></div>
+          </div>
+        </div>
+        <div class="char-shadow"></div>
+      </div>
+      <div class="hero-text">
+        <div class="hero-eyebrow">✦ Welcome to my world ✦</div>
+        <h1 class="hero-title">
+          <span class="line1">I BUILD</span>
+          <span class="line2 typed-text" id="typed-text"></span>
+          <span class="cursor-blink">█</span>
+        </h1>
+        <p class="hero-sub">
+          A full-stack developer crafting pixel-perfect digital experiences —
+          one block at a time.
+        </p>
+        <div class="hero-btns">
+          <a href="#projects" class="mc-btn primary">🗺️ Explore City</a>
+          <a href="#contact" class="mc-btn secondary">📩 Send Message</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-block">
+            <span class="stat-val">3+</span>
+            <span class="stat-label">Yrs XP</span>
+          </div>
+          <div class="stat-block">
+            <span class="stat-val">20+</span>
+            <span class="stat-label">Projects</span>
+          </div>
+          <div class="stat-block">
+            <span class="stat-val">10+</span>
+            <span class="stat-label">Clients</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- City map mini preview -->
+    <div class="mini-map" id="mini-map">
+      <div class="mini-map-label">🗺️ CITY MAP</div>
+      <div class="mini-map-body">
+        <div class="mm-zone park">🌳 Park</div>
+        <div class="mm-zone stadium">🏟️ Stadium</div>
+        <div class="mm-zone residential">🏠 Home</div>
+        <div class="mm-zone city-gate">🚪 Gate</div>
+        <div class="mm-zone forest">🌲 Forest</div>
+        <div class="mm-zone projects-zone">🏙️ Projects</div>
+      </div>
+    </div>
+
+    <div class="scroll-hint">▼ SCROLL TO EXPLORE ▼</div>
+  </section>
+
+  <!-- ========== ABOUT SECTION ========== -->
+  <section id="about" class="section">
+    <div class="section-header">
+      <span class="section-badge">📜 CHAPTER 01</span>
+      <h2 class="section-title">About the Player</h2>
+      <div class="pixel-divider"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-card inventory-card">
+        <div class="inv-title">🎒 Inventory</div>
+        <div class="inventory-grid" id="inventory-grid">
+          <!-- Filled by JS -->
+        </div>
+      </div>
+      <div class="about-card bio-card">
+        <div class="bio-header">
+          <div class="player-tag">
+            <span class="tag-bar"></span>
+            <span class="player-name">YourName</span>
+            <span class="player-title">Full Stack Dev</span>
+          </div>
+          <div class="health-bar">
+            <span class="hb-label">HP</span>
+            <div class="hearts">
+              <span>❤️</span><span>❤️</span><span>❤️</span><span>❤️</span><span>❤️</span>
+            </div>
+          </div>
+        </div>
+        <p class="bio-text">
+          Hey there! I'm a passionate developer who builds immersive digital experiences.
+          Just like crafting in Minecraft, I combine different tools and technologies to
+          create something amazing from scratch. My world is made of clean code, creative
+          designs, and endless curiosity.
+        </p>
+        <p class="bio-text">
+          When I'm not coding, I'm exploring new frameworks, building side projects,
+          or grinding levels in actual Minecraft. Every project is a new world to discover.
+        </p>
+        <div class="bio-facts">
+          <div class="fact"><span class="fact-icon">🌍</span> Based in India</div>
+          <div class="fact"><span class="fact-icon">🎓</span> CS Graduate</div>
+          <div class="fact"><span class="fact-icon">💼</span> Open to Work</div>
+          <div class="fact"><span class="fact-icon">🎮</span> Gamer & Builder</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SKILLS SECTION ========== -->
+  <section id="skills" class="section dark-section">
+    <div class="section-header">
+      <span class="section-badge">⚔️ CHAPTER 02</span>
+      <h2 class="section-title">Skill Tree</h2>
+      <div class="pixel-divider"></div>
+    </div>
+    <div class="skill-tabs">
+      <button class="skill-tab active" data-cat="frontend">🎨 Frontend</button>
+      <button class="skill-tab" data-cat="backend">⚙️ Backend</button>
+      <button class="skill-tab" data-cat="tools">🔧 Tools</button>
+    </div>
+    <div class="skill-tree" id="skill-tree">
+      <!-- Filled by JS -->
+    </div>
+  </section>
+
+  <!-- ========== PROJECTS / CITY MAP ========== -->
+  <section id="projects" class="section">
+    <div class="section-header">
+      <span class="section-badge">🏙️ CHAPTER 03</span>
+      <h2 class="section-title">The Portfolio City</h2>
+      <p class="section-sub">Click on a district to explore projects</p>
+      <div class="pixel-divider"></div>
+    </div>
+
+    <!-- Interactive City Map -->
+    <div class="city-map-container">
+      <div class="city-map" id="city-map">
+        <!-- Border -->
+        <div class="city-border"></div>
+
+        <!-- Zones -->
+        <div class="city-zone park-zone" data-zone="park">
+          <span class="zone-icon">🌳</span>
+          <span class="zone-label">Park</span>
+        </div>
+        <div class="city-zone stadium-zone" data-zone="stadium">
+          <span class="zone-icon">🏟️</span>
+          <span class="zone-label">Stadium</span>
+        </div>
+        <div class="city-zone forest-zone" data-zone="forest">
+          <span class="zone-icon">🌲</span>
+          <span class="zone-label">Forest</span>
+        </div>
+        <div class="city-zone gate-zone" data-zone="gate">
+          <span class="zone-icon">🚪</span>
+          <span class="zone-label">City Gate</span>
+        </div>
+
+        <!-- Project blocks P1–P9 -->
+        <div class="city-blocks">
+          <div class="proj-block" data-proj="p1" style="--r:0;--c:0">P1</div>
+          <div class="proj-block" data-proj="p2" style="--r:0;--c:1">P2</div>
+          <div class="proj-block" data-proj="p3" style="--r:0;--c:2">P3</div>
+          <div class="proj-block" data-proj="p4" style="--r:1;--c:2">P4</div>
+          <div class="proj-block" data-proj="p5" style="--r:1;--c:1">P5</div>
+          <div class="proj-block" data-proj="p6" style="--r:1;--c:0">P6</div>
+          <div class="proj-block" data-proj="p7" style="--r:2;--c:0">P7</div>
+          <div class="proj-block" data-proj="p8" style="--r:2;--c:1">P8</div>
+          <div class="proj-block" data-proj="p9" style="--r:2;--c:2">P9</div>
+        </div>
+
+        <!-- Walking character on map -->
+        <div class="map-player" id="map-player">🧑‍💻</div>
+
+        <!-- WASD hint -->
+        <div class="wasd-hint">
+          <div class="wasd-row"><span class="key">W</span></div>
+          <div class="wasd-row"><span class="key">A</span><span class="key">S</span><span class="key">D</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project Cards Grid -->
+    <div class="project-cards" id="project-cards">
+      <!-- Filled by JS -->
+    </div>
+  </section>
+
+  <!-- ========== EXPERIENCE / TIMELINE ========== -->
+  <section id="experience" class="section dark-section">
+    <div class="section-header">
+      <span class="section-badge">📅 CHAPTER 04</span>
+      <h2 class="section-title">Quest Log</h2>
+      <p class="section-sub">My journey through the developer world</p>
+      <div class="pixel-divider"></div>
+    </div>
+    <div class="timeline" id="timeline">
+      <!-- Filled by JS -->
+    </div>
+  </section>
+
+  <!-- ========== CONTACT SECTION ========== -->
+  <section id="contact" class="section">
+    <div class="section-header">
+      <span class="section-badge">📬 CHAPTER 05</span>
+      <h2 class="section-title">Send a Message in a Bottle</h2>
+      <p class="section-sub">Drop me a note — I'll respond faster than a creeper explodes</p>
+      <div class="pixel-divider"></div>
+    </div>
+    <div class="contact-container">
+      <div class="contact-info">
+        <div class="contact-card">
+          <div class="cc-icon">📧</div>
+          <div class="cc-label">Email</div>
+          <div class="cc-val">you@example.com</div>
+        </div>
+        <div class="contact-card">
+          <div class="cc-icon">🐙</div>
+          <div class="cc-label">GitHub</div>
+          <div class="cc-val">github.com/yourname</div>
+        </div>
+        <div class="contact-card">
+          <div class="cc-icon">💼</div>
+          <div class="cc-label">LinkedIn</div>
+          <div class="cc-val">linkedin.com/in/yourname</div>
+        </div>
+        <div class="contact-card">
+          <div class="cc-icon">🐦</div>
+          <div class="cc-label">Twitter</div>
+          <div class="cc-val">@yourhandle</div>
+        </div>
+      </div>
+      <form class="contact-form" id="contact-form" novalidate>
+        <div class="form-group">
+          <label class="mc-label">👤 Your Name</label>
+          <input type="text" class="mc-input" id="fname" placeholder="Steve" required />
+          <span class="field-error" id="fname-err"></span>
+        </div>
+        <div class="form-group">
+          <label class="mc-label">📧 Email Address</label>
+          <input type="email" class="mc-input" id="femail" placeholder="steve@minecraft.com" required />
+          <span class="field-error" id="femail-err"></span>
+        </div>
+        <div class="form-group">
+          <label class="mc-label">📝 Subject</label>
+          <input type="text" class="mc-input" id="fsubject" placeholder="Let's build something!" />
+        </div>
+        <div class="form-group">
+          <label class="mc-label">💬 Message</label>
+          <textarea class="mc-input mc-textarea" id="fmessage" rows="5" placeholder="I saw your portfolio city and I'd like to..." required></textarea>
+          <span class="field-error" id="fmsg-err"></span>
+        </div>
+        <button type="submit" class="mc-btn primary full-width" id="send-btn">
+          📨 Send Message
+        </button>
+        <div class="form-success" id="form-success">
+          ✅ Message delivered! I'll get back to you soon.
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer id="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">⛏️ CraftFolio</span>
+        <p class="footer-tagline">Built block by block with ❤️</p>
+      </div>
+      <div class="footer-nav">
+        <a href="#hero">Spawn</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <p class="footer-copy">© 2025 YourName · All blocks reserved</p>
+    </div>
+  </footer>
+
+  <!-- ========== PROJECT MODAL ========== -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal-box" id="modal-box">
+      <button class="modal-close" id="modal-close">✕</button>
+      <div class="modal-content" id="modal-content"></div>
+    </div>
+  </div>
+
+  <!-- ========== NOTIFICATION TOAST ========== -->
+  <div class="toast" id="toast"></div>
+
+  <!-- ========== BACK TO TOP ========== -->
+  <button class="back-top" id="back-top" title="Back to top">⬆</button>
+
+  <script src="script.js"></script>
+</body>
+</html>

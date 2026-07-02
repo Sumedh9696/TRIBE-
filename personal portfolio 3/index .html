@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sumedh Pathe — 3D Minecraft Portfolio</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- LOADING SCREEN -->
+  <div id="loading-screen">
+    <div class="ls-inner">
+      <div class="ls-logo">&#9935;</div>
+      <h1 class="ls-title">SUMEDH'S WORLD</h1>
+      <p class="ls-sub">Portfolio World · Est. 2023</p>
+      <div class="ls-bar-wrap"><div class="ls-bar" id="ls-bar"></div></div>
+      <p class="ls-msg" id="ls-msg">Generating terrain…</p>
+      <div class="ls-tips">
+        <p><span class="key">W A S D</span> Walk around</p>
+        <p><span class="key">Click + Drag</span> Look around</p>
+        <p><span class="key">E</span> Interact with buildings</p>
+        <p><span class="key">V</span> 1st/3rd Person &nbsp; <span class="key">M</span> Map &nbsp; <span class="key">ESC</span> Menu</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3D CANVAS -->
+  <canvas id="world-canvas"></canvas>
+
+  <!-- TOP HUD -->
+  <div id="hud-top">
+    <div class="hud-name">&#9935; SUMEDH PATHE</div>
+    <div class="hud-loc" id="hud-loc">&#128205; Spawn Point</div>
+    <div class="hud-ctrl">
+      <span class="key">WASD</span> Move &nbsp;
+      <span class="key">Drag</span> Look &nbsp;
+      <span class="key">E</span> Interact &nbsp;
+      <span class="key">V</span> View &nbsp;
+      <span class="key">M</span> Map &nbsp;
+      <span class="key">ESC</span> Menu
+    </div>
+  </div>
+
+  <!-- VIEW TOGGLE BUTTON -->
+  <button id="view-btn" onclick="toggleCameraView()">
+    <span id="view-label">&#128065; 3RD</span>
+  </button>
+
+  <!-- MINIMAP (top-right) -->
+  <div id="minimap-wrap">
+    <div class="mm-hdr">
+      <span class="mm-title">&#128506; MAP</span>
+      <button class="mm-close" onclick="toggleMinimap()">&#x2715;</button>
+    </div>
+    <canvas id="minimap-canvas" width="180" height="180"></canvas>
+    <div class="mm-foot"><span id="mm-coords">X:0  Z:8</span></div>
+  </div>
+  <!-- Button shown when minimap is hidden -->
+  <button id="map-btn" class="hidden" onclick="toggleMinimap()">&#128506;</button>
+
+  <!-- HOTBAR -->
+  <div id="hotbar">
+    <div class="hb-slot active" onclick="teleport('spawn')">&#127968;<span>Spawn</span></div>
+    <div class="hb-slot" onclick="teleport('about')">&#128220;<span>About</span></div>
+    <div class="hb-slot" onclick="teleport('skills')">&#9876;<span>Skills</span></div>
+    <div class="hb-slot" onclick="teleport('projects')">&#127959;<span>Projects</span></div>
+    <div class="hb-slot" onclick="teleport('intern')">&#128188;<span>Intern</span></div>
+    <div class="hb-slot" onclick="teleport('contact')">&#128236;<span>Contact</span></div>
+  </div>
+
+  <!-- HEALTH + XP -->
+  <div id="hud-health">
+    <div class="hp-row">
+      <span class="hp-lbl">HP</span>
+      <span class="hearts">&#10084;&#10084;&#10084;&#10084;&#10084;&#10084;&#10084;&#10084;&#10084;&#10084;</span>
+    </div>
+    <div class="xp-wrap"><div class="xp-bar"></div></div>
+    <div class="xp-lbl">XP: Graduate 2027 · Dev Level 12</div>
+  </div>
+
+  <!-- CROSSHAIR (hidden in 3rd person) -->
+  <div id="crosshair" style="display:none;">+</div>
+
+  <!-- INTERACT PROMPT -->
+  <div id="interact-prompt" class="hidden">
+    <span class="key">E</span> Interact
+  </div>
+
+  <!-- INFO PANEL -->
+  <div id="info-panel" class="hidden">
+    <div class="ip-hdr">
+      <span id="ip-icon">&#127968;</span>
+      <span id="ip-title">Building</span>
+      <button onclick="closePanel()">&#x2715;</button>
+    </div>
+    <div class="ip-body" id="ip-body"></div>
+    <div class="ip-foot">
+      <button class="mc-btn green" id="ip-btn">&#128203; View Resume</button>
+    </div>
+  </div>
+
+  <!-- RESUME MODAL -->
+  <div id="resume-modal" class="hidden">
+    <div class="rm-box">
+      <div class="rm-hdr">
+        <span>&#128203; SUMEDH PATHE — RESUME</span>
+        <button onclick="closeResume()">&#x2715;</button>
+      </div>
+      <div class="rm-body">
+        <div class="rm-sec">
+          <div class="rm-tag">&#128100; PLAYER INFO</div>
+          <div class="rm-g2">
+            <div class="rm-i">&#128205; Buldana, Maharashtra</div>
+            <div class="rm-i">&#128222; +91 87938 96929</div>
+            <div class="rm-i">&#9993; sumedhpatthe2005@gmail.com</div>
+            <div class="rm-i">&#128024; github.com/Sumedh9696</div>
+          </div>
+        </div>
+        <div class="rm-sec">
+          <div class="rm-tag">&#127891; EDUCATION</div>
+          <div class="rm-edu">
+            <div class="rm-edu-t">B.E. — Computer Science Engineering</div>
+            <div class="rm-edu-s">Anuradha College of Engineering &amp; Technology · 2023–2027</div>
+            <div class="rm-edu-s">Chikhli, Maharashtra</div>
+            <div class="rm-edu-c">Data Structures · Algorithms · AI · Web Dev · OS · DBMS · OOP · Cyber Security</div>
+          </div>
+        </div>
+        <div class="rm-sec">
+          <div class="rm-tag">&#9876; SKILL TREE</div>
+          <div class="rm-sg">
+            <div class="rm-sh">Frontend</div>
+            <div class="rm-st"><span>HTML5</span><span>CSS3</span><span>JavaScript ES6+</span><span>React.js</span><span>Tailwind CSS</span><span>Responsive Design</span></div>
+          </div>
+          <div class="rm-sg">
+            <div class="rm-sh">Backend</div>
+            <div class="rm-st"><span>Node.js</span><span>Express.js</span><span>REST API</span><span>Python</span><span>MySQL</span><span>MongoDB</span><span>Firebase</span></div>
+          </div>
+        </div>
+        <div class="rm-sec">
+          <div class="rm-tag">&#128188; INTERNSHIP</div>
+          <div class="rm-int">
+            <div class="rm-int-t">Web Development Intern · 3Skill.in · Remote · Ongoing</div>
+            <ul>
+              <li>Building &amp; maintaining web apps with React.js and Tailwind CSS</li>
+              <li>UI development, responsive design, and REST API integration</li>
+              <li>Version control with Git and agile development workflows</li>
+            </ul>
+          </div>
+        </div>
+        <div class="rm-sec">
+          <div class="rm-tag">&#127959; PROJECTS</div>
+          <div class="rm-pi">
+            <div class="rm-pn">&#127822; Neutrichef — AI Nutrition Platform (Ongoing)</div>
+            <div class="rm-pt">React.js · Python · REST APIs · Tailwind CSS</div>
+            <div class="rm-pd">AI-driven nutrition platform with personalised recipe recommendations and macro-level nutritional analysis. Python backend for AI inference and user preference modelling.</div>
+          </div>
+          <div class="rm-pi">
+            <div class="rm-pn">&#128268; NutriGuide — Chrome Extension (2025)</div>
+            <div class="rm-pt">JavaScript · Chrome Extensions API · REST API · CSS3</div>
+            <div class="rm-pd">Chrome extension providing instant nutritional info while browsing food websites. Content scripts detect food context and surface AI-powered popup insights.</div>
+          </div>
+          <div class="rm-pi">
+            <div class="rm-pn">&#127996; Yonex Website Clone (2025)</div>
+            <div class="rm-pt">HTML5 · CSS3 · JavaScript · Responsive Design</div>
+            <div class="rm-pd">Pixel-accurate Yonex sports brand clone. CSS precision, cross-browser compatibility, and semantic HTML performance optimisation.</div>
+          </div>
+        </div>
+        <div class="rm-sec">
+          <div class="rm-tag">&#127885; CERTS &amp; SKILLS</div>
+          <div class="rm-tw">
+            <span>HTML &amp; CSS Workshop 2024</span><span>Communication</span>
+            <span>Critical Thinking</span><span>Collaboration</span>
+            <span>Time Management</span><span>Adaptability</span>
+            <span>Open Source</span><span>Hackathons</span>
+            <span>UI/UX Design</span><span>AI Product Dev</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAUSE MENU -->
+  <div id="pause-menu" class="hidden">
+    <div class="pm-box">
+      <h2 class="pm-title">&#9208; PAUSED</h2>
+      <p class="pm-sub">Sumedh Pathe · Portfolio World</p>
+      <div class="pm-btns">
+        <button class="mc-btn green" onclick="resumeGame()">&#9654; Resume</button>
+        <button class="mc-btn gray" onclick="openResume()">&#128203; Full Resume</button>
+        <button class="mc-btn gray" onclick="teleport('spawn')">&#127968; Spawn</button>
+      </div>
+      <div class="pm-links">
+        <a href="mailto:sumedhpatthe2005@gmail.com">&#9993; Email</a>
+        <a href="https://github.com/Sumedh9696" target="_blank">&#128024; GitHub</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

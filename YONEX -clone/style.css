@@ -1,0 +1,1472 @@
+/* ==========================================================================
+   YONEX OFFICIAL SITE CLONE - PRODUCTION READY CSS REPLICA
+   ========================================================================== */
+
+/* --- IMPORT HIGH-DENSITY PROFESSIONAL TYPOGRAPHY --- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700&display=swap');
+
+/* ==========================================================================
+   1. GLOBAL DESIGN SYSTEM & TOKENS (VARIABLE ARCHITECTURE)
+   ========================================================================== */
+:root {
+    /* --- COLOR PALETTE (HIGH ACCURACY SPECIFICATIONS) --- */
+    --yonex-blue:       #002F6C;
+    --yonex-blue-rgb:   0, 47, 108;
+    --yonex-green:      #00A859;
+    --yonex-green-rgb:  0, 168, 89;
+    --yonex-dark:       #0A0A0A;
+    --yonex-dark-rgb:   10, 10, 10;
+    --yonex-surface:    #121418;
+    --yonex-surface-02: #191C22;
+    --yonex-light:      #F5F5F7;
+    --text-light:       #FFFFFF;
+    --text-muted:       #8E929A;
+    --text-dark:        #111111;
+    --border-color:     rgba(255, 255, 255, 0.08);
+    --border-glow:      rgba(0, 168, 89, 0.35);
+
+    /* --- PREMIUM GRADIENTS --- */
+    --gradient-primary:   linear-gradient(135deg, var(--yonex-blue) 0%, var(--yonex-green) 100%);
+    --gradient-dark:      linear-gradient(180deg, #111111 0%, #050505 100%);
+    --gradient-overlay:   linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0.4) 50%, rgba(10,10,10,0) 100%);
+    --gradient-hero:      linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.2) 100%);
+    --gradient-shimmer:   linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.05) 50%, transparent 100%);
+
+    /* --- TYPOGRAPHY SCALE (RESPONSIVE BASES) --- */
+    --font-main: 'Montserrat', sans-serif;
+    
+    /* --- TIMING & EASING FUNCTIONS (HARDWARE ACCELERATED) --- */
+    --ease-premium: cubic-bezier(0.25, 1, 0.5, 1);
+    --ease-io:      cubic-bezier(0.76, 0, 0.24, 1);
+    --transition-fast:   all 0.2s var(--ease-premium);
+    --transition-normal: all 0.4s var(--ease-premium);
+    --transition-slow:   all 0.8s var(--ease-premium);
+    --transition-fluid:  all 1.2s cubic-bezier(0.1, 1, 0.1, 1);
+
+    /* --- ELEVATION & SHADOW ARCHITECTURES --- */
+    --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.7);
+    --shadow-glow: 0 0 30px rgba(0, 168, 89, 0.25);
+
+    /* --- GRID & LAYOUT TOKENS --- */
+    --container-width: 1680px;
+}
+
+/* ==========================================================================
+   2. STUCTURED RESET & OVERRIDES
+   ========================================================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: var(--font-main);
+    background-color: var(--yonex-dark);
+    color: var(--text-light);
+    overflow-x: hidden;
+    font-size: 16px;
+}
+
+body {
+    overflow-x: hidden;
+    position: relative;
+    background-color: var(--yonex-dark);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-normal);
+}
+
+ul, ol {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    user-select: none;
+}
+
+button, input, select, textarea {
+    font-family: inherit;
+    background: none;
+    border: none;
+    color: inherit;
+}
+
+/* ==========================================================================
+   3. GLOBAL STRUCTURAL ELEMENTS & SCROLLBARS
+   ========================================================================== */
+.container {
+    width: 100%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 60px;
+}
+
+/* Custom Performance Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--yonex-dark);
+}
+::-webkit-scrollbar-thumb {
+    background: #222;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--yonex-green);
+}
+
+/* Real-time Scroll Progress indicator bar mapped at viewport roof */
+.scroll-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, var(--yonex-blue), var(--yonex-green));
+    transform-origin: left;
+    transform: scaleX(0);
+    z-index: 99999;
+}
+
+/* ==========================================================================
+   4. ADVANCED CURSOR INTERACTION HOOKS
+   ========================================================================== */
+.cursor-glow {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(0, 168, 89, 0.08) 0%, rgba(0,0,0,0) 70%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    mix-blend-mode: screen;
+    will-change: transform;
+    display: none;
+}
+
+@media (min-width: 1025px) {
+    .cursor-glow { display: block; }
+}
+
+/* Interactive Element Detection classes mapped via JS */
+.interactive-hover-state {
+    cursor: none !important;
+}
+
+/* ==========================================================================
+   5. COMPREHENSIVE TYPOGRAPHY ARCHITECTURE
+   ========================================================================== */
+.section-header {
+    margin-bottom: 60px;
+    position: relative;
+}
+
+.section-title {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    line-height: 0.95;
+    margin-bottom: 20px;
+}
+
+.section-title span {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,255,255,0.6);
+    display: block;
+}
+
+.section-title strong {
+    color: var(--text-light);
+    font-weight: 900;
+}
+
+.section-subtitle {
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+    color: var(--text-muted);
+    max-width: 700px;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+/* ==========================================================================
+   6. HEADER & NAVIGATION (GLASSMORPHISM / MEGA GRID)
+   ========================================================================== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10000;
+    background-color: rgba(10, 10, 10, 0.4);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    border-bottom: 1px solid transparent;
+    transition: background-color 0.5s var(--ease-premium), 
+                backdrop-filter 0.5s var(--ease-premium), 
+                border-color 0.5s var(--ease-premium), 
+                padding 0.5s var(--ease-premium);
+    padding: 25px 0;
+}
+
+header.scrolled {
+    background-color: rgba(10, 10, 10, 0.75);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border-color: var(--border-color);
+    padding: 15px 0;
+}
+
+.nav-grid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Advanced SVG Logo Presentation */
+.logo svg {
+    height: 24px;
+    fill: var(--text-light);
+    transition: var(--transition-normal);
+    will-change: transform;
+}
+
+.logo:hover svg {
+    transform: scale(1.02);
+}
+
+/* Centralized Nav Node Array */
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 100%;
+}
+
+.nav-item {
+    position: static; /* Vital for full-width Mega Menu */
+}
+
+.nav-link {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 12px 24px;
+    color: rgba(255,255,255,0.7);
+    position: relative;
+    display: block;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 24px;
+    right: 24px;
+    height: 2px;
+    background-color: var(--yonex-green);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s var(--ease-premium);
+}
+
+.nav-link:hover {
+    color: var(--text-light);
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Enterprise Multi-Tier Mega Menu Infrastructure */
+.mega-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--gradient-dark);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 4px solid var(--yonex-green);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.4s var(--ease-premium), 
+                transform 0.4s var(--ease-premium), 
+                visibility 0.4s var(--ease-premium);
+    padding: 60px 0;
+    z-index: -1;
+    box-shadow: var(--shadow-lg);
+}
+
+.nav-item:hover .mega-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.mega-layout {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr) 1.5fr;
+    gap: 40px;
+}
+
+.mega-column h4 {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--yonex-green);
+    margin-bottom: 25px;
+}
+
+.mega-links li {
+    margin-bottom: 15px;
+}
+
+.mega-links a {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    display: inline-block;
+}
+
+.mega-links a:hover {
+    color: var(--text-light);
+    transform: translateX(6px);
+}
+
+/* Micro Teaser Block inside Mega Menu */
+.mega-featured {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    aspect-ratio: 16/10;
+    box-shadow: var(--shadow-md);
+}
+
+.mega-featured img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-slow);
+}
+
+.mega-featured-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.mega-featured:hover img {
+    transform: scale(1.05);
+}
+
+/* Nav Right Utility Core */
+.nav-utilities {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.utility-icon {
+    font-size: 1.15rem;
+    color: rgba(255,255,255,0.8);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.utility-icon:hover {
+    color: var(--yonex-green);
+    transform: scale(1.1);
+}
+
+/* Mobile Hamburger Component */
+.mobile-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    width: 24px;
+    cursor: pointer;
+}
+
+.mobile-hamburger span {
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-light);
+    transition: var(--transition-normal);
+}
+
+/* ==========================================================================
+   7. HERO MULTI-SLIDER (CINEMATIC EXPERIENCE)
+   ========================================================================== */
+.hero-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: #000;
+    overflow: hidden;
+}
+
+.hero-slider-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    transition: opacity 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+    will-change: opacity;
+}
+
+.hero-slide.active-slide {
+    opacity: 1;
+    z-index: 5;
+}
+
+/* Micro Zoom Parallax System */
+.hero-image-container {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    transform: scale(1.12);
+    transition: transform 7s cubic-bezier(0.1, 1, 0.1, 1);
+    will-change: transform;
+}
+
+.hero-slide.active-slide .hero-image-container {
+    transform: scale(1);
+}
+
+.hero-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.hero-gradient-shield {
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-hero);
+    z-index: 2;
+}
+
+/* Sequential Text Reveal Mechanism */
+.hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 900px;
+    padding-top: 100px;
+}
+
+.hero-tagline {
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--yonex-green);
+    letter-spacing: 5px;
+    margin-bottom: 25px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: var(--transition-slow);
+    transition-delay: 0.3s;
+}
+
+.hero-title {
+    font-size: clamp(3rem, 7vw, 6.5rem);
+    font-weight: 900;
+    line-height: 0.9;
+    text-transform: uppercase;
+    letter-spacing: -3px;
+    margin-bottom: 35px;
+    overflow: hidden;
+}
+
+.hero-title span {
+    display: block;
+    opacity: 0;
+    transform: translateY(100px);
+    transition: transform 1.2s var(--ease-premium), opacity 1.2s var(--ease-premium);
+}
+
+.hero-title span:nth-child(1) { transition-delay: 0.5s; }
+.hero-title span:nth-child(2) { 
+    transition-delay: 0.65s;
+    color: transparent;
+    -webkit-text-stroke: 1.5px #fff;
+}
+
+.hero-description {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: rgba(255,255,255,0.75);
+    font-weight: 400;
+    line-height: 1.6;
+    max-width: 650px;
+    margin-bottom: 50px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: var(--transition-slow);
+    transition-delay: 0.8s;
+}
+
+.hero-cta-group {
+    display: flex;
+    gap: 20px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: var(--transition-slow);
+    transition-delay: 0.95s;
+}
+
+/* Active Class Stage Implementations for Reveals */
+.hero-slide.active-slide .hero-tagline,
+.hero-slide.active-slide .hero-description,
+.hero-slide.active-slide .hero-cta-group {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hero-slide.active-slide .hero-title span {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Navigation Interface HUD elements for Hero */
+.hero-hud-controls {
+    position: absolute;
+    bottom: 60px;
+    right: 60px;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.hud-btn {
+    width: 60px;
+    height: 60px;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: rgba(10,10,10,0.4);
+    backdrop-filter: blur(10px);
+    transition: var(--transition-normal);
+}
+
+.hud-btn:hover {
+    background: var(--text-light);
+    color: var(--yonex-dark);
+    border-color: var(--text-light);
+}
+
+.hero-indicators {
+    position: absolute;
+    bottom: 85px;
+    left: 60px;
+    z-index: 20;
+    display: flex;
+    gap: 12px;
+}
+
+.hero-dot {
+    width: 45px;
+    height: 2px;
+    background-color: rgba(255,255,255,0.2);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-dot::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--yonex-green);
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+.hero-dot.active-dot::after {
+    transform: scaleX(1);
+    transition: transform 6s linear;
+}
+
+/* ==========================================================================
+   8. BUTTON SYSTEMS (COMPREHENSIVE PRESSETS)
+   ========================================================================== */
+.btn-yonex {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 38px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: var(--transition-normal);
+}
+
+.btn-primary {
+    background-color: var(--text-light);
+    color: var(--yonex-dark);
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-primary);
+    z-index: -1;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.btn-primary:hover {
+    color: var(--text-light);
+    box-shadow: var(--shadow-glow);
+}
+
+.btn-primary:hover::before {
+    transform: scaleY(1);
+    transform-origin: bottom;
+}
+
+.btn-outline {
+    border: 2px solid rgba(255,255,255,0.2);
+    color: var(--text-light);
+    background: transparent;
+}
+
+.btn-outline:hover {
+    border-color: var(--text-light);
+    background-color: var(--text-light);
+    color: var(--yonex-dark);
+}
+
+.btn-glow {
+    background: var(--gradient-primary);
+    color: var(--text-light);
+    box-shadow: 0 4px 15px rgba(0, 168, 89, 0.2);
+}
+
+.btn-glow:hover {
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   9. INTERACTIVE SPORTS CATEGORIES (GRID COMPOSITIONS)
+   ========================================================================== */
+.sports-section {
+    padding: 140px 0;
+    position: relative;
+}
+
+.sports-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 30px;
+}
+
+.sport-card {
+    position: relative;
+    height: 600px;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: var(--yonex-surface);
+    box-shadow: var(--shadow-md);
+    will-change: transform;
+}
+
+.sport-card.col-7 { grid-column: span 7; }
+.sport-card.col-5 { grid-column: span 5; }
+.sport-card.col-4 { grid-column: span 4; }
+.sport-card.col-8 { grid-column: span 8; }
+
+.sport-image-box {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.sport-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s cubic-bezier(0.1, 1, 0.1, 1);
+}
+
+.sport-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.3) 60%, rgba(0,0,0,0) 100%);
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    z-index: 5;
+    transition: var(--transition-normal);
+}
+
+.sport-card-title {
+    font-size: 2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+}
+
+.sport-card-description {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 450px;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s var(--ease-premium), opacity 0.5s var(--ease-premium);
+}
+
+.sport-cta-link {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--yonex-green);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.sport-cta-link i {
+    transition: transform 0.3s var(--ease-premium);
+}
+
+/* Hover State Animations */
+.sport-card:hover {
+    box-shadow: var(--shadow-lg), 0 0 40px rgba(0, 47, 108, 0.15);
+}
+
+.sport-card:hover .sport-image-box img {
+    transform: scale(1.06);
+}
+
+.sport-card:hover .sport-overlay {
+    background: linear-gradient(to top, rgba(0, 47, 108, 0.85) 0%, rgba(10,10,10,0.4) 60%, rgba(0,0,0,0) 100%);
+}
+
+.sport-card:hover .sport-card-description {
+    max-height: 100px;
+    opacity: 1;
+    margin-bottom: 10px;
+}
+
+.sport-card:hover .sport-cta-link i {
+    transform: translateX(6px);
+}
+
+/* ==========================================================================
+   10. HIGH-END PRODUCT SHOWCASE GRAPHIC MATRIX
+   ========================================================================== */
+.product-section {
+    padding: 140px 0;
+    background-color: #0d0f12;
+}
+
+.product-tabs-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    gap: 40px;
+    margin-bottom: 50px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.product-tab-trigger {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    padding: 20px 0;
+    cursor: pointer;
+    position: relative;
+    transition: var(--transition-fast);
+}
+
+.product-tab-trigger.active-tab,
+.product-tab-trigger:hover {
+    color: var(--text-light);
+}
+
+.product-tab-trigger::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--yonex-green);
+    transform: scaleX(0);
+    transition: transform 0.3s var(--ease-premium);
+}
+
+.product-tab-trigger.active-tab::after {
+    transform: scaleX(1);
+}
+
+.showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.product-card {
+    background: var(--yonex-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    transition: var(--transition-normal);
+}
+
+.product-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 6px 14px;
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 10;
+    border-radius: 2px;
+    background-color: var(--yonex-blue);
+}
+
+.product-badge.new-release {
+    background-color: var(--yonex-green);
+}
+
+.product-media-container {
+    height: 340px;
+    background-color: var(--yonex-surface-02);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-media-container img {
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.6s var(--ease-premium);
+    z-index: 2;
+}
+
+/* Micro Quick View Action Grid Panel */
+.product-action-curtain {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(10, 10, 10, 0.75);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    z-index: 5;
+    transition: var(--transition-normal);
+}
+
+.product-data-payload {
+    padding: 30px;
+}
+
+.product-segmentation {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--yonex-green);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.product-title-core {
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.product-technical-specs {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-bottom: 20px;
+    height: 40px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.product-pricing-tier {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--text-light);
+}
+
+/* Hover Implementations for Product Nodes */
+.product-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--border-glow);
+    box-shadow: var(--shadow-lg), var(--shadow-glow);
+}
+
+.product-card:hover .product-media-container img {
+    transform: scale(1.08) rotate(-2deg);
+}
+
+.product-card:hover .product-action-curtain {
+    opacity: 1;
+}
+
+/* Skeleton Loading Structure Matrix */
+.skeleton-loader {
+    position: relative;
+    overflow: hidden;
+    background-color: #222 !important;
+}
+
+.skeleton-loader::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-shimmer);
+    animation: shimmerLoop 1.6s infinite linear;
+}
+
+@keyframes shimmerLoop {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* ==========================================================================
+   11. ATHLETE ROSTER DISPLAY ARCHITECTURE
+   ========================================================================== */
+.athlete-section {
+    padding: 140px 0;
+    background-color: var(--yonex-dark);
+}
+
+.athlete-roster-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.athlete-profile-card {
+    position: relative;
+    height: 650px;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.athlete-image-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.athlete-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 1.2s cubic-bezier(0.1, 1, 0.1, 1);
+}
+
+.athlete-gradient-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, #000 0%, rgba(0,0,0,0.5) 40%, transparent 100%);
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    z-index: 5;
+}
+
+.athlete-sports-category {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--yonex-green);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+.athlete-display-name {
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+.athlete-accolades-list {
+    margin-bottom: 30px;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.6s var(--ease-premium), opacity 0.6s var(--ease-premium);
+}
+
+.athlete-accolades-list li {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.athlete-accolades-list li i {
+    color: #FFD700;
+    font-size: 0.8rem;
+}
+
+/* Hover Action Cascades */
+.athlete-profile-card:hover .athlete-image-wrapper img {
+    transform: scale(1.05);
+}
+
+.athlete-profile-card:hover .athlete-accolades-list {
+    max-height: 120px;
+    opacity: 1;
+}
+
+/* ==========================================================================
+   12. CORPORATE NEWS & CHRONICLE MAGAZINE GRID
+   ========================================================================== */
+.news-section {
+    padding: 140px 0;
+    background-color: #0d0f12;
+}
+
+.news-matrix-layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.news-editorial-box {
+    background: var(--yonex-surface);
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: var(--transition-normal);
+}
+
+.news-banner-capture {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.news-banner-capture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s var(--ease-premium);
+}
+
+.news-timestamp {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background-color: rgba(10, 10, 10, 0.9);
+    padding: 6px 14px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    border-left: 3px solid var(--yonex-green);
+    z-index: 5;
+}
+
+.news-content-block {
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.news-classification {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: var(--yonex-blue);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.news-headline {
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--text-light);
+    margin-bottom: 15px;
+    transition: var(--transition-fast);
+}
+
+.news-teaser-text {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.news-action-anchor {
+    margin-top: auto;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.news-action-anchor i {
+    transition: transform 0.3s var(--ease-premium);
+}
+
+/* Hover Manipulations */
+.news-editorial-box:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.news-editorial-box:hover .news-banner-capture img {
+    transform: scale(1.05);
+}
+
+.news-editorial-box:hover .news-headline {
+    color: var(--yonex-green);
+}
+
+.news-editorial-box:hover .news-action-anchor i {
+    transform: translateX(6px);
+}
+
+/* ==========================================================================
+   13. MASSIVE HIGH-IMPACT PROMOTIONAL PARALLAX BLOCK
+   ========================================================================== */
+.impact-parallax-row {
+    position: relative;
+    padding: 160px 0;
+    background-image: linear-gradient(rgba(10,10,10,0.7), rgba(10,10,10,0.7)), url('https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?q=80&w=2070&auto=format&fit=crop');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+}
+
+.impact-inner-payload {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.impact-display-header {
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    line-height: 0.95;
+    margin-bottom: 30px;
+}
+
+.impact-narrative {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: rgba(255,255,255,0.85);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 45px;
+}
+
+/* ==========================================================================
+   14. SCROLL INTERSECTION REVEAL SYSTEMS (GSAP / INTERSECTION OBSERVER OUTLETS)
+   ========================================================================== */
+.reveal-trigger {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s var(--ease-premium), transform 1s var(--ease-premium);
+    will-change: transform, opacity;
+}
+
+.reveal-trigger.scroll-animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Sequential delay assignments for children grids */
+.delay-01 { transition-delay: 0.1s; }
+.delay-02 { transition-delay: 0.2s; }
+.delay-03 { transition-delay: 0.3s; }
+.delay-04 { transition-delay: 0.4s; }
+
+/* ==========================================================================
+   15. ENTERPRISE MULTI-COLUMN FOOTER METRIC
+   ========================================================================== */
+footer {
+    background-color: #060709;
+    border-top: 1px solid var(--border-color);
+    padding: 100px 0 40px 0;
+}
+
+.footer-main-grid {
+    display: grid;
+    grid-template-columns: 2fr repeat(3, 1fr) 1.5fr;
+    gap: 50px;
+    margin-bottom: 80px;
+}
+
+.footer-brand-summary svg {
+    height: 28px;
+    fill: var(--text-light);
+    margin-bottom: 30px;
+}
+
+.footer-description-paragraph {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    max-width: 320px;
+}
+
+.footer-social-cluster {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-social-node {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: var(--yonex-surface);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.6);
+    transition: var(--transition-normal);
+}
+
+.footer-social-node:hover {
+    background-color: var(--yonex-blue);
+    color: var(--text-light);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-sm);
+}
+
+.footer-column-header {
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-light);
+    margin-bottom: 30px;
+}
+
+.footer-navigation-links li {
+    margin-bottom: 15px;
+}
+
+.footer-navigation-links a {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.footer-navigation-links a:hover {
+    color: var(--yonex-green);
+    padding-left: 4px;
+}
+
+/* Newsletter Input Form Block Components */
+.newsletter-form-container {
+    position: relative;
+}
+
+.newsletter-input-field {
+    width: 100%;
+    background-color: var(--yonex-surface);
+    border: 1px solid var(--border-color);
+    padding: 16px 20px;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    border-radius: 2px;
+    transition: var(--transition-normal);
+}
+
+.newsletter-input-field:focus {
+    border-color: var(--yonex-green);
+    box-shadow: 0 0 15px rgba(0, 168, 89, 0.1);
+}
+
+.newsletter-submit-trigger {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    bottom: 5px;
+    background-color: var(--text-light);
+    color: var(--yonex-dark);
+    padding: 0 20px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: var(--transition-fast);
+}
+
+.newsletter-submit-trigger:hover {
+    background-color: var(--yonex-green);
+    color: var(--text-light);
+}
+
+/* Base Closing Module Bottom Strip */
+.footer-closure-strip {
+    border-top: 1px solid var(--border-color);
+    padding-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.footer-legal-anchors {
+    display: flex;
+    gap: 30px;
+}
+
+.footer-legal-anchors a:hover {
+    color: var(--text-light);
+}
+
+/* ==========================================================================
+   16. PERFORMANCE-TUNED FLUID BREAKPOINTS ENGINE (RESPONSIVE SECTIONS)
+   ========================================================================== */
+
+/* --- BREAKPOINT: 1920px (Ultra Wide Viewport Scales) --- */
+@media (min-width: 1921px) {
+    :root { font-size: 18px; }
+    .container { max-width: 1800px; }
+}
+
+/* --- BREAKPOINT: 1440px (Desktop Optimization Standard) --- */
+@media (max-width: 1440px) {
+    .container { padding: 0 40px; }
+    .sport-card { height: 520px; }
+    .athlete-profile-card { height: 580px; }
+}
+
+/* --- BREAKPOINT: 1200px (Laptops Configurations) --- */
+@media (max-width: 1200px) {
+    .showcase-grid { grid-template-columns: repeat(3, 1fr); }
+    .athlete-roster-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-main-grid { grid-template-columns: repeat(3, 1fr); gap: 40px; }
+}
+
+/* --- BREAKPOINT: 992px (Tablets / Enterprise Break Modality) --- */
+@media (max-width: 992px) {
+    .nav-menu { display: none; } /* Drop standard nodes layout */
+    .mobile-hamburger { display: flex; } /* Call active mobile framework menu code alternative */
+    
+    .sports-grid { grid-template-columns: repeat(2, 1fr); }
+    .sport-card.col-7, .sport-card.col-5, .sport-card.col-4, .sport-card.col-8 { grid-column: span 2; }
+    
+    .news-matrix-layout { grid-template-columns: repeat(2, 1fr); }
+    .footer-main-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* --- BREAKPOINT: 768px (Handheld Standard Viewports) --- */
+@media (max-width: 768px) {
+    .container { padding: 0 24px; }
+    header { padding: 18px 0; }
+    
+    .hero-hud-controls { display: none; }
+    .hero-indicators { left: 24px; bottom: 40px; }
+    
+    .sports-grid { grid-template-columns: 1fr; }
+    .sport-card.col-7, .sport-card.col-5, .sport-card.col-4, .sport-card.col-8 { grid-column: span 1; height: 420px; }
+    .sport-overlay { padding: 30px; }
+    
+    .showcase-grid { grid-template-columns: repeat(2, 1fr); }
+    .athlete-roster-grid { grid-template-columns: 1fr; }
+    .news-matrix-layout { grid-template-columns: 1fr; }
+}
+
+/* --- BREAKPOINT: 576px (Small Mobile Landscape Variant) --- */
+@media (max-width: 576px) {
+    .showcase-grid { grid-template-columns: 1fr; }
+    .footer-main-grid { grid-template-columns: 1fr; }
+    .footer-closure-strip { flex-direction: column; gap: 20px; text-align: center; }
+    .footer-legal-anchors { justify-content: center; }
+    .hero-cta-group { flex-direction: column; width: 100%; }
+    .btn-yonex { width: 100%; }
+}
+
+/* --- BREAKPOINT: 375px (Compact Mobile Architectures) --- */
+@media (max-width: 375px) {
+    :root { font-size: 14px; }
+    .section-title { letter-spacing: -1px; }
+}
