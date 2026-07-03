@@ -1,0 +1,106 @@
+[build-system]
+requires = ["setuptools>=65", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tribe-backend"
+version = "0.1.0"
+description = "Backend API for Tribe social networking application"
+readme = "README.md"
+requires-python = ">=3.12"
+license = {text = "MIT"}
+authors = [
+    {name = "Tribe Team", email = "team@tribe.app"}
+]
+keywords = ["social", "networking", "fastapi", "sqlalchemy"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Web Environment",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Framework :: FastAPI",
+    "Topic :: Software Development :: Libraries :: Application Frameworks",
+]
+
+dependencies = [
+    "fastapi==0.104.1",
+    "uvicorn[standard]==0.24.0",
+    "python-multipart==0.0.6",
+    "sqlalchemy==2.0.23",
+    "asyncpg==0.29.0",
+    "alembic==1.13.0",
+    "pydantic==2.5.0",
+    "pydantic-settings==2.1.0",
+    "email-validator==2.1.0",
+    "python-jose[cryptography]==3.3.0",
+    "passlib[bcrypt]==1.7.4",
+    "bcrypt==4.1.2",
+    "cryptography==41.0.7",
+    "python-dotenv==1.0.0",
+    "gunicorn==21.2.0",
+    "python-json-logger==2.0.7",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==7.4.3",
+    "pytest-asyncio==0.22.0",
+    "black==23.12.0",
+    "isort==5.13.2",
+    "flake8==6.1.0",
+    "mypy==1.7.1",
+]
+
+[project.urls]
+Homepage = "https://tribe.app"
+Documentation = "https://docs.tribe.app"
+Repository = "https://github.com/tribe/tribe-backend"
+Issues = "https://github.com/tribe/tribe-backend/issues"
+
+[tool.black]
+line-length = 100
+target-version = ['py312']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | venv
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 100
+skip_gitignore = true
+known_first_party = ["app"]
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+check_untyped_defs = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+addopts = "-v --tb=short"
+
+[tool.pylint.messages_control]
+disable = "C0111"  # missing-docstring
+
+[tool.pylint.format]
+max-line-length = 100

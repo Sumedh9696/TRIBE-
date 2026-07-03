@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sumedh Pathe — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-trail" id="cursorTrail"></div>
+
+  <!-- Canvas for 3D particles -->
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-logo">SP<span class="dot">.</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#internship">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-status">
+      <span class="status-dot"></span>
+      <span>Available for opportunities</span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="tag">Web Developer</span>
+        <span class="tag">AI Enthusiast</span>
+      </div>
+      <h1 class="hero-name">
+        <span class="name-line" data-text="SUMEDH">SUMEDH</span>
+        <span class="name-line accent" data-text="PATTHE">PATTHE</span>
+      </h1>
+      <p class="hero-sub">
+        Building <span class="highlight">performant interfaces</span> & 
+        <span class="highlight">AI-integrated</span> products that matter.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">
+          <span>View My Work</span>
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </a>
+        <a href="#contact" class="btn btn-ghost">Get In Touch</a>
+      </div>
+    </div>
+    <div class="hero-3d-card" id="heroCard">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <div class="card-avatar">
+            <div class="avatar-ring"></div>
+            <div class="avatar-letters">SP</div>
+          </div>
+          <div class="card-info">
+            <h3>Sumedh Pathe</h3>
+            <p>Full‑Stack & AI Dev</p>
+          </div>
+          <div class="card-stats">
+            <div class="stat"><span class="stat-n">3+</span><span class="stat-l">Projects</span></div>
+            <div class="stat"><span class="stat-n">2025</span><span class="stat-l">Intern</span></div>
+            <div class="stat"><span class="stat-n">∞</span><span class="stat-l">Ideas</span></div>
+          </div>
+          <div class="card-hint">Hover to flip →</div>
+        </div>
+        <div class="card-face card-back">
+          <h3 class="back-title">Tech Stack</h3>
+          <div class="tech-grid">
+            <span>React.js</span><span>Node.js</span><span>Python</span>
+            <span>Tailwind</span><span>MongoDB</span><span>Firebase</span>
+            <span>REST API</span><span>MySQL</span><span>Git</span>
+          </div>
+          <p class="back-uni">B.E. CSE @ ACET · 2027</p>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      <span>SCROLL</span>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-label">01 · ABOUT</div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <h2 class="section-title">Crafting <em>digital experiences</em> with purpose.</h2>
+        <p>I'm a B.E. Computer Science student (graduating 2027) at Anuradha College of Engineering & Technology, Chikhli, Maharashtra. I specialise in full‑stack web development and love baking AI into real products.</p>
+        <p>Clean code, pixel-perfect UIs, and the kind of UX that makes people smile — that's what I'm chasing every sprint.</p>
+        <div class="about-langs">
+          <span>🇬🇧 English (Fluent)</span>
+          <span>🇮🇳 Hindi (Native)</span>
+          <span>मराठी Native</span>
+        </div>
+      </div>
+      <div class="about-cards reveal">
+        <div class="info-card" data-tilt>
+          <div class="info-icon">🎓</div>
+          <h4>Education</h4>
+          <p>B.E. CSE · ACET<br/><small>July 2023 – May 2027</small></p>
+        </div>
+        <div class="info-card" data-tilt>
+          <div class="info-icon">💼</div>
+          <h4>Internship</h4>
+          <p>Web Dev Intern<br/><small>3Skill.in · Remote · Ongoing</small></p>
+        </div>
+        <div class="info-card" data-tilt>
+          <div class="info-icon">🏆</div>
+          <h4>Certificate</h4>
+          <p>HTML & CSS Workshop<br/><small>2024</small></p>
+        </div>
+        <div class="info-card" data-tilt>
+          <div class="info-icon">🌍</div>
+          <h4>Location</h4>
+          <p>Buldana<br/><small>Maharashtra, India</small></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-label">02 · SKILLS</div>
+    <h2 class="section-title reveal">My <em>arsenal</em>.</h2>
+    <div class="skills-tabs">
+      <button class="tab-btn active" data-tab="frontend">Frontend</button>
+      <button class="tab-btn" data-tab="backend">Backend</button>
+      <button class="tab-btn" data-tab="soft">Soft Skills</button>
+    </div>
+    <div class="skills-panel active" id="tab-frontend">
+      <div class="skill-bars">
+        <div class="skill-bar reveal" data-pct="92"><span>HTML5</span><div class="bar-track"><div class="bar-fill"></div></div></div>
+        <div class="skill-bar reveal" data-pct="88"><span>CSS3 / Tailwind</span><div class="bar-track"><div class="bar-fill"></div></div></div>
+        <div class="skill-bar reveal" data-pct="85"><span>JavaScript (ES6+)</span><div class="bar-track"><div class="bar-fill"></div></div></div>
+        <div class="skill-bar reveal" data-pct="80"><span>React.js</span><div class="bar-track"><div class="bar-fill"></div></div></div>
+        <div class="skill-bar reveal" data-pct="78"><span>Responsive Design</span><div class="bar-track"><div class="bar-fill"></div></div></div>
+      </div>
+    </div>
+    <div class="skills-panel" id="tab-backend">
+      <div class="skill-bars">
+        <div class="skill-bar reveal" data-pct="80"><span>Node.js / Express</span><div class="bar-track"><div class="bar-fill"></div></div></div>
+        <div class="skill-bar reveal" data-pct="75"><span>Python</span><div class="bar-track"><div class="bar-fill"></div></div></div>
+        <div class="skill-bar reveal" data-pct="72"><span>REST API Design</span><div class="bar-track"><div class="bar-fill"></div></div></div>
+        <div class="skill-bar reveal" data-pct="70"><span>MySQL / MongoDB</span><div class="bar-track"><div class="bar-fill"></div></div></div>
+        <div class="skill-bar reveal" data-pct="68"><span>Firebase</span><div class="bar-track"><div class="bar-fill"></div></div></div>
+      </div>
+    </div>
+    <div class="skills-panel" id="tab-soft">
+      <div class="soft-grid">
+        <div class="soft-card reveal" data-tilt><span>💬</span><p>Communication</p></div>
+        <div class="soft-card reveal" data-tilt><span>🧠</span><p>Critical Thinking</p></div>
+        <div class="soft-card reveal" data-tilt><span>🤝</span><p>Collaboration</p></div>
+        <div class="soft-card reveal" data-tilt><span>⏰</span><p>Time Management</p></div>
+        <div class="soft-card reveal" data-tilt><span>🔄</span><p>Adaptability</p></div>
+        <div class="soft-card reveal" data-tilt><span>🌐</span><p>Open Source</p></div>
+        <div class="soft-card reveal" data-tilt><span>🚀</span><p>Hackathons</p></div>
+        <div class="soft-card reveal" data-tilt><span>🎨</span><p>UI/UX Design</p></div>
+        <div class="soft-card reveal" data-tilt><span>🤖</span><p>AI Product Dev</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-label">03 · PROJECTS</div>
+    <h2 class="section-title reveal">Things I've <em>built</em>.</h2>
+    <div class="projects-grid">
+
+      <div class="project-card reveal" data-tilt>
+        <div class="project-header">
+          <div class="project-icon">🥗</div>
+          <span class="project-status ongoing">Ongoing</span>
+        </div>
+        <h3>Neutrichef</h3>
+        <p class="project-sub">AI Nutrition Platform</p>
+        <p class="project-desc">AI‑driven platform delivering personalised recipe recommendations and macro-level nutritional analysis tailored to individual health goals.</p>
+        <div class="project-tags">
+          <span>React.js</span><span>Python</span><span>REST APIs</span><span>Tailwind CSS</span>
+        </div>
+        <ul class="project-points">
+          <li>Scalable React component architecture with mobile-first UI</li>
+          <li>Python backend for AI inference & session management</li>
+          <li>Real-time dietary data via third-party nutrition APIs</li>
+        </ul>
+        <a href="https://github.com/Sumedh9696" target="_blank" class="project-link">
+          View on GitHub →
+        </a>
+      </div>
+
+      <div class="project-card reveal" data-tilt>
+        <div class="project-header">
+          <div class="project-icon">🧩</div>
+          <span class="project-status done">2025</span>
+        </div>
+        <h3>NutriGuide</h3>
+        <p class="project-sub">Browser Extension</p>
+        <p class="project-desc">Chrome extension providing instant nutritional info & healthy meal suggestions while browsing food or recipe websites.</p>
+        <div class="project-tags">
+          <span>JavaScript</span><span>Chrome API</span><span>REST API</span><span>CSS3</span>
+        </div>
+        <ul class="project-points">
+          <li>Content scripts for food-related page context detection</li>
+          <li>AI-powered insights in a non-intrusive popup UI</li>
+        </ul>
+        <a href="https://github.com/Sumedh9696" target="_blank" class="project-link">
+          View on GitHub →
+        </a>
+      </div>
+
+      <div class="project-card reveal" data-tilt>
+        <div class="project-header">
+          <div class="project-icon">🏸</div>
+          <span class="project-status done">2025</span>
+        </div>
+        <h3>Yonex Clone</h3>
+        <p class="project-sub">Pixel-Perfect Website Clone</p>
+        <p class="project-desc">A pixel-accurate clone of the Yonex sports brand website, replicating product layout, navigation, and responsive grid from scratch.</p>
+        <div class="project-tags">
+          <span>HTML5</span><span>CSS3</span><span>JavaScript</span>
+        </div>
+        <ul class="project-points">
+          <li>Cross-browser compatibility & performance optimisation</li>
+          <li>Semantic HTML with minimal asset footprint</li>
+        </ul>
+        <a href="https://github.com/Sumedh9696" target="_blank" class="project-link">
+          View on GitHub →
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- INTERNSHIP -->
+  <section id="internship">
+    <div class="section-label">04 · EXPERIENCE</div>
+    <h2 class="section-title reveal">Where I've <em>worked</em>.</h2>
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content" data-tilt>
+          <div class="timeline-header">
+            <h3>Web Development Intern</h3>
+            <span class="timeline-badge">Ongoing</span>
+          </div>
+          <p class="company">3Skill.in · Remote</p>
+          <ul>
+            <li>Building & maintaining web apps using React.js and Tailwind CSS.</li>
+            <li>Collaborating on UI development, responsive design & REST API integration.</li>
+            <li>Real-world dev workflows, Git version control & agile practices.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-label">05 · CONTACT</div>
+    <div class="contact-wrap reveal">
+      <h2 class="section-title">Let's <em>build</em> something together.</h2>
+      <p class="contact-sub">I'm always open to freelance gigs, internships, or just a good tech chat.</p>
+      <div class="contact-links">
+        <a href="mailto:sumedhpatthe2005@gmail.com" class="contact-btn" data-tilt>
+          <span>📧</span>
+          <div>
+            <small>Email me at</small>
+            <p>sumedhpatthe2005@gmail.com</p>
+          </div>
+        </a>
+        <a href="tel:+918793896929" class="contact-btn" data-tilt>
+          <span>📱</span>
+          <div>
+            <small>Call / WhatsApp</small>
+            <p>+91 87938 96929</p>
+          </div>
+        </a>
+        <a href="https://github.com/Sumedh9696" target="_blank" class="contact-btn" data-tilt>
+          <span>💻</span>
+          <div>
+            <small>Find me on</small>
+            <p>github.com/Sumedh9696</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Designed & built by <strong>Sumedh Pathe</strong> · 2025</p>
+    <p class="footer-sub">B.E. CSE · Anuradha College of Engineering & Technology</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Sumedh Pathe — Minecraft Portfolio World</title>
+<link rel="stylesheet" href="style.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<!-- ═══ LOADING SCREEN ═══ -->
+<div id="loading">
+  <div class="ld-box">
+    <div class="ld-icon">⛏️</div>
+    <h1 class="ld-title">SUMEDH'S WORLD</h1>
+    <p class="ld-sub">Portfolio · Est. 2023</p>
+    <div class="ld-bar-wrap"><div id="ld-bar"></div></div>
+    <p id="ld-msg">Generating terrain…</p>
+    <div class="ld-tips">
+      <p><span class="k">W / ↑</span> Walk forward along path</p>
+      <p><span class="k">S / ↓</span> Walk backward</p>
+      <p><span class="k">A / D</span> Turn left / right</p>
+      <p><span class="k">E</span> Enter building &amp; explore section</p>
+      <p><span class="k">Q</span> Close popup &amp; continue</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MAIN 3D CANVAS ═══ -->
+<canvas id="world"></canvas>
+
+<!-- ═══ MINIMAP CANVAS ═══ -->
+<div id="mm-wrap">
+  <div class="mm-hdr">
+    <span class="mm-title">🗺 MAP</span>
+    <button class="mm-close" onclick="toggleMap()">✕</button>
+  </div>
+  <canvas id="minimap" width="180" height="180"></canvas>
+  <div class="mm-foot"><span id="mm-coords">Section 1 / 6</span></div>
+</div>
+<button id="mm-btn" class="hidden" onclick="toggleMap()">🗺</button>
+
+<!-- ═══ TOP HUD ═══ -->
+<div id="hud-top">
+  <span class="hud-name">⛏️ SUMEDH PATHE</span>
+  <span id="hud-section">📍 Intro — Spawn Point</span>
+  <span class="hud-hint" id="hud-hint">Press <span class="k">E</span> to enter</span>
+</div>
+
+<!-- ═══ VIEW TOGGLE ═══ -->
+<button id="view-btn" onclick="toggleView()"><span id="view-lbl">👁 3RD</span></button>
+
+<!-- ═══ PATH NAVIGATOR (bottom left) ═══ -->
+<div id="path-nav">
+  <div class="path-label">PORTFOLIO PATH</div>
+  <div id="path-steps"></div>
+</div>
+
+<!-- ═══ CONTROLS HINT (bottom right) ═══ -->
+<div id="ctrl-hint">
+  <span class="k">W/S</span> Move &nbsp;
+  <span class="k">A/D</span> Turn &nbsp;
+  <span class="k">E</span> Enter &nbsp;
+  <span class="k">Q</span> Close
+</div>
+
+<!-- ═══ HEALTH BAR ═══ -->
+<div id="hud-hp">
+  <div class="hp-row"><span class="hp-l">HP</span><span class="hearts">❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️</span></div>
+  <div class="xp-wrap"><div class="xp-fill"></div></div>
+  <div class="xp-txt">XP: Graduate 2027 · Dev Level 12</div>
+</div>
+
+<!-- ═══ POPUP PANEL ═══ -->
+<div id="popup" class="hidden">
+  <div class="pop-inner" id="pop-inner">
+    <div class="pop-hdr" id="pop-hdr">
+      <span id="pop-icon">🏠</span>
+      <span id="pop-title">Welcome</span>
+      <button class="pop-close" onclick="closePopup()">✕</button>
+    </div>
+    <div class="pop-body" id="pop-body"><!-- filled by JS --></div>
+    <div class="pop-foot" id="pop-foot">
+      <button class="mc-btn gray" onclick="closePopup()">
+        <span class="k">Q</span> Close &amp; Continue →
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PAUSE MENU ═══ -->
+<div id="pause" class="hidden">
+  <div class="pm-box">
+    <h2 class="pm-t">⏸ PAUSED</h2>
+    <p class="pm-s">Sumedh Pathe · Portfolio World</p>
+    <div class="pm-btns">
+      <button class="mc-btn green" onclick="resumeGame()">▶ Resume</button>
+      <button class="mc-btn gray"  onclick="showSection(currentStep)">📋 Reopen Section</button>
+      <button class="mc-btn gray"  onclick="goToStep(0)">🏠 Restart Path</button>
+    </div>
+    <div class="pm-links">
+      <a href="mailto:sumedhpatthe2005@gmail.com">✉️ Email</a>
+      <a href="https://github.com/Sumedh9696" target="_blank">🐙 GitHub</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TOAST ═══ -->
+<div id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

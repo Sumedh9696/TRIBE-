@@ -1,0 +1,219 @@
+/* ============================================================
+   SUMEDH'S WORLD — style.css
+   Joshua's World inspired — drag-to-explore low-poly island
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden;user-select:none}
+
+body{
+  background:linear-gradient(180deg,#b8d4f0 0%,#c8e4f8 40%,#d8f0ff 100%);
+  font-family:'Segoe UI',system-ui,sans-serif;
+  cursor:grab;
+}
+body.dark{background:linear-gradient(180deg,#0a0f20 0%,#111830 50%,#0d1525 100%)}
+body.grabbing{cursor:grabbing}
+body.dark #brand{color:#7090c0}
+body.dark #story-text{color:#8ab0d8}
+
+/* ── CANVAS ── */
+#c{position:fixed;inset:0;width:100%!important;height:100%!important;pointer-events:none}
+
+/* ── BRAND ── */
+#brand{
+  position:fixed;top:22px;left:24px;z-index:100;
+  font-size:clamp(9px,1.2vw,13px);font-weight:900;
+  letter-spacing:.08em;color:#3a4a6a;line-height:1.3;
+  text-transform:uppercase;
+}
+
+/* ── MENU ── */
+#menu-btn{
+  position:fixed;top:20px;right:24px;z-index:100;
+  background:none;border:none;font-size:1.6rem;cursor:pointer;color:#3a4a6a;
+  transition:transform .2s;
+}
+#menu-btn:hover{transform:scale(1.15)}
+body.dark #menu-btn{color:#8ab0d8}
+
+#menu{
+  position:fixed;top:0;right:0;bottom:0;z-index:200;
+  width:280px;background:rgba(255,255,255,.97);
+  padding:3rem 2rem 2rem;
+  display:flex;flex-direction:column;gap:1rem;
+  box-shadow:-4px 0 24px rgba(0,0,0,.12);
+  animation:slideMenuIn .25s ease;
+}
+body.dark #menu{background:rgba(10,15,30,.97);box-shadow:-4px 0 24px rgba(0,0,0,.5)}
+@keyframes slideMenuIn{from{transform:translateX(100%)}to{transform:translateX(0)}}
+#menu.hidden{display:none}
+.menu-x{background:none;border:none;font-size:1.3rem;cursor:pointer;color:#666;align-self:flex-end;margin-bottom:.5rem}
+#menu a{
+  font-size:1rem;font-weight:600;color:#3a4a6a;text-decoration:none;
+  padding:.6rem .8rem;border-radius:4px;cursor:pointer;transition:background .15s;
+}
+#menu a:hover{background:rgba(100,120,200,.1)}
+body.dark #menu a{color:#8ab0d8}
+
+/* ── DRAG HINT ── */
+#drag-hint{
+  position:fixed;top:42%;left:50%;transform:translate(-50%,-50%);
+  text-align:center;z-index:50;pointer-events:none;
+  transition:opacity .6s ease;
+}
+#drag-hint.gone{opacity:0}
+#drag-icon{font-size:2.4rem;animation:swing 1.6s ease-in-out infinite;margin-bottom:.4rem}
+@keyframes swing{0%,100%{transform:translateX(-6px)}50%{transform:translateX(6px)}}
+#drag-text{
+  font-size:.72rem;font-weight:700;letter-spacing:.2em;color:#5a6a8a;
+  font-family:'Segoe UI',sans-serif;
+}
+body.dark #drag-text{color:#7090c0}
+
+/* ── STORY TEXT ── */
+#story-text{
+  position:fixed;top:18%;left:50%;transform:translateX(-50%);
+  text-align:center;z-index:50;pointer-events:none;
+  font-size:clamp(1rem,2.2vw,1.5rem);color:#4a5a7a;
+  font-style:italic;font-weight:300;line-height:1.6;
+  max-width:520px;width:90%;
+  opacity:0;transition:opacity .6s ease;
+  font-family:Georgia,serif;
+}
+#story-text.visible{opacity:1}
+body.dark #story-text{color:#8ab0d8}
+
+/* ── DARK TOGGLE ── */
+#dark-btn{
+  position:fixed;bottom:24px;right:24px;z-index:100;
+  background:rgba(255,255,255,.85);border:none;border-radius:50%;
+  width:40px;height:40px;font-size:1.1rem;cursor:pointer;
+  box-shadow:0 2px 12px rgba(0,0,0,.15);transition:all .2s;
+}
+#dark-btn:hover{transform:scale(1.1)}
+body.dark #dark-btn{background:rgba(20,30,50,.9);color:#f0c040}
+
+/* ── SECTION DOTS ── */
+#section-dots{
+  position:fixed;right:16px;top:50%;transform:translateY(-50%);
+  z-index:100;display:flex;flex-direction:column;gap:10px;
+}
+.dot{
+  width:8px;height:8px;border-radius:50%;
+  background:rgba(90,110,160,.3);cursor:pointer;
+  transition:all .2s;border:2px solid rgba(90,110,160,.4);
+}
+.dot:hover{background:rgba(90,110,160,.6);transform:scale(1.3)}
+.dot.active{background:#5a6ea8;transform:scale(1.4);border-color:#5a6ea8}
+body.dark .dot{background:rgba(120,160,220,.3);border-color:rgba(120,160,220,.4)}
+body.dark .dot.active{background:#8ab0d8;border-color:#8ab0d8}
+
+/* ── POPUP CARD ── */
+#card{
+  position:fixed;inset:0;z-index:300;
+  background:rgba(30,40,70,.7);
+  display:flex;align-items:center;justify-content:center;
+  backdrop-filter:blur(6px);animation:fadeIn .25s ease;
+}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+#card.hidden{display:none}
+.card-inner{
+  background:#fff;border-radius:16px;
+  width:min(580px,92vw);max-height:86vh;
+  display:flex;flex-direction:column;
+  box-shadow:0 20px 60px rgba(0,0,0,.25);
+  overflow:hidden;animation:cardIn .3s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes cardIn{from{transform:scale(.85) translateY(30px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
+body.dark .card-inner{background:#141c2e;color:#c8d8f0}
+.card-close{
+  position:absolute;top:16px;right:16px;
+  background:rgba(0,0,0,.08);border:none;border-radius:50%;
+  width:32px;height:32px;font-size:.9rem;cursor:pointer;
+  transition:background .15s;
+}
+.card-close:hover{background:rgba(0,0,0,.15)}
+.card-inner{position:relative}
+.card-icon{font-size:2.5rem;text-align:center;padding:1.6rem 1.6rem .5rem}
+.card-title{
+  font-size:clamp(1rem,2.5vw,1.4rem);font-weight:800;text-align:center;
+  color:#2a3450;padding:0 1.6rem .8rem;
+}
+body.dark .card-title{color:#c8d8f0}
+.card-body{
+  overflow-y:auto;padding:.6rem 1.6rem 1rem;flex:1;
+  font-size:.95rem;line-height:1.75;color:#3a4a6a;
+}
+body.dark .card-body{color:#9ab0d0}
+.card-body h3{font-size:.9rem;font-weight:700;color:#2a3a8a;margin:1rem 0 .4rem}
+body.dark .card-body h3{color:#8ab0f0}
+.card-body p{margin-bottom:.6rem}
+.card-body ul{padding-left:1.2rem;margin-bottom:.6rem}
+.card-body li{margin-bottom:.25rem}
+.card-body a{color:#4a6ae0;text-decoration:none}
+.card-body a:hover{text-decoration:underline}
+.card-foot{padding:.8rem 1.6rem 1.4rem;display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center}
+.card-btn{
+  padding:.55rem 1.3rem;border-radius:6px;border:none;
+  font-size:.85rem;font-weight:600;cursor:pointer;transition:all .15s;
+  text-decoration:none;display:inline-block;
+}
+.card-btn.primary{background:#3a5ae0;color:#fff}
+.card-btn.primary:hover{background:#2a4ad0;transform:translateY(-1px)}
+.card-btn.secondary{background:rgba(58,90,224,.1);color:#3a5ae0;border:2px solid #3a5ae0}
+.card-btn.secondary:hover{background:rgba(58,90,224,.2)}
+
+/* Tags */
+.tag{display:inline-block;background:rgba(58,90,224,.1);color:#3a5ae0;border:1px solid rgba(58,90,224,.3);border-radius:4px;font-size:.78rem;padding:2px 8px;margin:2px}
+body.dark .tag{background:rgba(100,150,240,.15);color:#8ab0f0;border-color:rgba(100,150,240,.3)}
+
+/* Skill bar */
+.skill-row{display:flex;align-items:center;gap:.7rem;margin-bottom:.5rem}
+.sk-name{font-size:.85rem;color:#3a4a6a;width:120px;flex-shrink:0;font-weight:500}
+body.dark .sk-name{color:#9ab0d0}
+.sk-bg{flex:1;height:8px;background:rgba(58,90,224,.12);border-radius:4px;overflow:hidden}
+.sk-fill{height:100%;background:linear-gradient(90deg,#3a5ae0,#6a8af8);border-radius:4px;transition:width 1s ease .3s}
+.sk-pct{font-size:.78rem;color:#8090b0;width:32px;text-align:right;flex-shrink:0}
+
+/* Project card */
+.proj{background:rgba(58,90,224,.04);border:1px solid rgba(58,90,224,.15);border-radius:10px;padding:1rem;margin-bottom:.8rem}
+body.dark .proj{background:rgba(100,150,240,.06);border-color:rgba(100,150,240,.2)}
+.proj-title{font-size:.95rem;font-weight:700;color:#2a3450;margin-bottom:.3rem}
+body.dark .proj-title{color:#c8d8f0}
+.proj-stack{font-size:.8rem;color:#6a8a9a;margin-bottom:.4rem}
+.proj-desc{font-size:.88rem;color:#5a6a8a;line-height:1.6;margin-bottom:.5rem}
+body.dark .proj-desc{color:#8a9ab8}
+.proj-links{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+.proj-link{font-size:.82rem;color:#3a5ae0;text-decoration:none;border:1px solid #3a5ae0;padding:2px 10px;border-radius:4px;transition:all .15s}
+.proj-link:hover{background:#3a5ae0;color:#fff}
+.proj-private{font-size:.8rem;color:#e05a3a;border:1px solid #e05a3a;padding:2px 8px;border-radius:4px}
+
+/* Timeline */
+.tl{display:flex;gap:.8rem;margin-bottom:1rem;position:relative}
+.tl-dot{width:12px;height:12px;background:#3a5ae0;border-radius:50%;flex-shrink:0;margin-top:.25rem;box-shadow:0 0 0 3px rgba(58,90,224,.2)}
+.tl-yr{font-size:.72rem;font-weight:700;color:#6a7ab0;margin-bottom:.15rem;letter-spacing:.05em}
+.tl-role{font-size:.9rem;font-weight:700;color:#2a3450;margin-bottom:.1rem}
+body.dark .tl-role{color:#c8d8f0}
+.tl-org{font-size:.82rem;color:#3a5ae0;margin-bottom:.25rem;font-weight:600}
+.tl-desc{font-size:.85rem;color:#5a6a8a;line-height:1.55}
+body.dark .tl-desc{color:#8a9ab8}
+
+/* ── LOADING ── */
+#loading{
+  position:fixed;inset:0;z-index:9999;
+  background:linear-gradient(135deg,#1a2a4a 0%,#0d1525 100%);
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity .8s ease;
+}
+#loading.out{opacity:0;pointer-events:none}
+.ld-inner{text-align:center}
+.ld-globe{font-size:4rem;animation:spin 2s linear infinite;margin-bottom:1rem;display:inline-block}
+@keyframes spin{0%{transform:rotate(0) scale(1)}50%{transform:rotate(180deg) scale(1.1)}100%{transform:rotate(360deg) scale(1)}}
+.ld-name{font-size:clamp(.9rem,2.5vw,1.3rem);font-weight:900;color:#c8d8f0;letter-spacing:.15em;margin-bottom:1.5rem}
+.ld-bar{width:260px;height:4px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden;margin:0 auto .8rem}
+#ld-fill{height:100%;width:0%;background:linear-gradient(90deg,#3a5ae0,#8ab0f8);border-radius:2px;transition:width .12s}
+.ld-msg{font-size:.8rem;color:#6a8ab0;letter-spacing:.05em}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(58,90,224,.3);border-radius:3px}

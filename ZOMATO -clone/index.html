@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zomato Clone | Find the best restaurants, cafés, and bars</title>
+    <!-- Linking external stylesheet for future styling -->
+    <link rel="stylesheet" href="text.css">
+    <!-- FontAwesome for standard UI icons (Location, Search, Mobile, etc.) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- 1. TOP NAVIGATION & HERO SECTION -->
+    <header class="hero-section">
+        <div class="container">
+            
+            <!-- Global Navigation Bar -->
+            <nav class="top-nav">
+                <div class="nav-left">
+                    <a href="#" class="nav-link get-app-link">
+                        <i class="fa-solid fa-mobile-screen-button"></i> Get the App
+                    </a>
+                </div>
+                <div class="nav-right">
+                    <a href="#" class="nav-link">Investor Relations</a>
+                    <a href="#" class="nav-link">Add restaurant</a>
+                    <a href="#" class="nav-link">Log in</a>
+                    <a href="#" class="nav-link">Sign up</a>
+                </div>
+            </nav>
+
+            <!-- Hero Core Content -->
+            <div class="hero-content">
+                <!-- Brand Logo Container -->
+                <div class="brand-logo-container">
+                    <img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcTYBXXpmMV-HiXIfduGOZnaBWVcZmesIgxychs0ss2FwdF9uZDKCWFTVBd29eUi_lknhdZxTRQNknWqBFc" alt="Zomato Logo" class="brand-logo">
+                </div>
+                
+                <h1 class="hero-title">Discover the best food & drinks in your city</h1>
+                <p class="hero-subtitle">Find top-rated restaurants, cafés, and delivery services near you</p>
+
+                <!-- Dual Search Bar Component -->
+                <div class="search-container">
+                    <div class="search-location-wrapper">
+                        <i class="fa-solid fa-location-dot location-icon"></i>
+                        <input type="text" class="search-input location-input" placeholder="Yelahanka, Bengaluru..." aria-label="Location">
+                        <i class="fa-solid fa-caret-down caret-icon"></i>
+                    </div>
+                    
+                    <span class="search-divider"></span>
+                    
+                    <div class="search-query-wrapper">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <input type="text" class="search-input query-input" placeholder="Search for restaurant, cuisine or a dish" aria-label="Search food">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- 2. MAIN CONTENT AREA -->
+    <main class="main-content container">
+
+        <!-- Popular Categories Section -->
+        <section class="categories-section" aria-label="Popular Dining Categories">
+            <div class="category-grid">
+                
+                <article class="category-card">
+                    <div class="category-image-wrapper">
+                        <img src="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcRIUydoAUmcgjSTwF8CadTqUevr_dKlapuMuhREHTrQRzikvYDVQ3MZK4WKViZufzyfzd8_StHPtBtB18w" alt="Online Food Delivery" class="category-image">
+                    </div>
+                    <div class="category-info">
+                        <h2 class="category-title">Order Online</h2>
+                        <p class="category-description">Stay home and order to your doorstep</p>
+                    </div>
+                </article>
+
+                <article class="category-card">
+                    <div class="category-image-wrapper">
+                        <img src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcR9RsRUYnqPo7eMIcuBxaXPlNaeUfYBRHrRTuJXlM3rcVWllmAWBQaGikuE3zDSe-FcVQECo00KIrmK1x8" alt="Fine Dining" class="category-image">
+                    </div>
+                    <div class="category-info">
+                        <h2 class="category-title">Dining</h2>
+                        <p class="category-description">View the city's favourite dining venues</p>
+                    </div>
+                </article>
+
+                <article class="category-card">
+                    <div class="category-image-wrapper">
+                        <img src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcSDMMMDAP8v6y2rBQ_I8YwoRqUqskezENVvGG8eczG79PGohEqtor69ZzGcZSb6gpQ2sp246xa9JmoyLYU" alt="Nightlife and Clubs" class="category-image">
+                    </div>
+                    <div class="category-info">
+                        <h2 class="category-title">Nightlife and Clubs</h2>
+                        <p class="category-description">Explore the city's top nightlife spots</p>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Featured Restaurants Section -->
+        <section class="featured-section" aria-label="Featured Restaurants and Collections">
+            <div class="section-header">
+                <div class="section-header-left">
+                    <h2 class="section-title">Collections</h2>
+                    <p class="section-subtitle">Explore curated lists of top restaurants, cafes, pubs, and bars in your area, based on trends</p>
+                </div>
+                <div class="section-header-right">
+                    <a href="#" class="see-all-link">All collections in your city <i class="fa-solid fa-caret-right"></i></a>
+                </div>
+            </div>
+
+            <div class="restaurant-grid">
+                
+                <article class="restaurant-card">
+                    <div class="restaurant-image-container">
+                        <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcQb-RFe-KAvk3WyqNLZ-11bHvKjsl1fUwtyQSBYViGRtuZcfaUQGhB4V5n675mognURfjM1YQYJA3J9Xaw" alt="Trending Restaurants" class="restaurant-image">
+                        <span class="restaurant-badge premium">Trending</span>
+                    </div>
+                    <div class="restaurant-details">
+                        <div class="restaurant-row-one">
+                            <h3 class="restaurant-name">The Gourmet Kitchen</h3>
+                            <span class="restaurant-rating">4.5 <i class="fa-solid fa-star"></i></span>
+                        </div>
+                        <div class="restaurant-row-two">
+                            <p class="restaurant-cuisines">Continental, North Indian, Italian</p>
+                            <p class="restaurant-price">₹800 for two</p>
+                        </div>
+                        <div class="restaurant-row-three">
+                            <p class="restaurant-delivery-time"><i class="fa-solid fa-motorcycle"></i> 25 mins</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="restaurant-card">
+                    <div class="restaurant-image-container">
+                        <img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcQt5FVhQiC9oM2F4Aob_fyZFRatKsebEe4FrKU6UEg6_UBIY_4nRNNN6QgTDs7o4f6o1lhXSJ0PIMD_6hk" alt="Top Local Cafes" class="restaurant-image">
+                    </div>
+                    <div class="restaurant-details">
+                        <div class="restaurant-row-one">
+                            <h3 class="restaurant-name">The Caffeine Club</h3>
+                            <span class="restaurant-rating">4.2 <i class="fa-solid fa-star"></i></span>
+                        </div>
+                        <div class="restaurant-row-two">
+                            <p class="restaurant-cuisines">Cafe, Desserts, Beverages</p>
+                            <p class="restaurant-price">₹400 for two</p>
+                        </div>
+                        <div class="restaurant-row-three">
+                            <p class="restaurant-delivery-time"><i class="fa-solid fa-motorcycle"></i> 18 mins</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="restaurant-card">
+                    <div class="restaurant-image-container">
+                        <img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcT2I3ppZXnTYr3weZ4SuzRAnwvy-djkY_CvTVHXKDsQtUjeDeeMC9CLsIfw7nQ3EJEjqI4hSrVtEMPiXgk" alt="Asian Cuisine Venue" class="restaurant-image">
+                        <span class="restaurant-badge discount">Offer: 20% OFF</span>
+                    </div>
+                    <div class="restaurant-details">
+                        <div class="restaurant-row-one">
+                            <h3 class="restaurant-name">Asiatic Wok & Dimsums</h3>
+                            <span class="restaurant-rating">4.7 <i class="fa-solid fa-star"></i></span>
+                        </div>
+                        <div class="restaurant-row-two">
+                            <p class="restaurant-cuisines">Asian, Chinese, Sushi</p>
+                            <p class="restaurant-price">₹1,200 for two</p>
+                        </div>
+                        <div class="restaurant-row-three">
+                            <p class="restaurant-delivery-time"><i class="fa-solid fa-motorcycle"></i> 32 mins</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="restaurant-card">
+                    <div class="restaurant-image-container">
+                        <img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcQemYzo-y1kuzmfl9poxi3AxQ8nfUx5OnTThPfl_b7fS6iiyGdS9gwbre6lw5CYebY1rvIcRz9NnZ_luqQ" alt="Dessert Parlour" class="restaurant-image">
+                    </div>
+                    <div class="restaurant-details">
+                        <div class="restaurant-row-one">
+                            <h3 class="restaurant-name">Sugar & Spice Confectionery</h3>
+                            <span class="restaurant-rating">4.4 <i class="fa-solid fa-star"></i></span>
+                        </div>
+                        <div class="restaurant-row-two">
+                            <p class="restaurant-cuisines">Bakery, Desserts, Ice Cream</p>
+                            <p class="restaurant-price">₹300 for two</p>
+                        </div>
+                        <div class="restaurant-row-three">
+                            <p class="restaurant-delivery-time"><i class="fa-solid fa-motorcycle"></i> 15 mins</p>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- App Download Marketing Segment -->
+        <section class="app-download-section" aria-label="Get the mobile app">
+            <div class="app-download-container">
+                
+                <div class="app-mockup-column">
+                    <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcTDrZ8nAgM0L0AMlIU_jUGBbM688_igM53P8Ss6cQ7EsDW6vdO_MnfztcH-Y3gc3RrB6xFDP0sDcNebd8Y" alt="Zomato Mobile Application Layout" class="app-mockup-img">
+                </div>
+                
+                <div class="app-content-column">
+                    <h2 class="app-section-title">Get the Zomato app</h2>
+                    <p class="app-section-desc">We will send you a link, open it on your phone to download the app</p>
+                    
+                    <form class="app-download-form" action="#" method="POST">
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="contact-method" value="email" checked class="radio-input">
+                                <span class="custom-radio"></span> Email
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="contact-method" value="phone" class="radio-input">
+                                <span class="custom-radio"></span> Phone
+                            </label>
+                        </div>
+                        
+                        <div class="input-action-group">
+                            <input type="text" placeholder="Email address" class="app-input" aria-label="Your Contact Info">
+                            <button type="submit" class="app-submit-btn">Share App Link</button>
+                        </div>
+                    </form>
+                    
+                    <div class="store-links-container">
+                        <p class="store-caption">Download app from</p>
+                        <div class="store-buttons">
+                            <a href="#" class="store-badge-link">
+                                <img src="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcT1IXDrlEyAfYcEp-hVVl8FUk1H0HbqGPDPDgAQ8Ztp-vD-EsTwp9-Ba38WjCg9I7Feh7KWuvpOI0QvZK8" alt="Download on Google Play Store" class="store-badge">
+                            </a>
+                            <a href="#" class="store-badge-link">
+                                <img src="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcQm3Hotunw2DktFtpKxrWhX11jBoEW8x_rMBj5Uy3rPakMyW2ErwVxFUOy3v7gd1iNALskBTfTEqdGYvxA" alt="Download on Apple App Store" class="store-badge">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 3. FOOTER REGION -->
+    <footer class="main-footer">
+        <div class="container">
+            
+            <div class="footer-top-row">
+                <img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcTYBXXpmMV-HiXIfduGOZnaBWVcZmesIgxychs0ss2FwdF9uZDKCWFTVBd29eUi_lknhdZxTRQNknWqBFc" alt="Zomato Corporate Logo" class="footer-logo">
+                
+                <div class="footer-selectors">
+                    <div class="selector-box">
+                        <span>India</span> <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="selector-box">
+                        <i class="fa-solid fa-globe"></i> <span>English</span> <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="footer-links-grid" aria-label="Footer Directory">
+                <div class="footer-column">
+                    <h4 class="footer-column-title">About Zomato</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="#" class="footer-link">Who We Are</a></li>
+                        <li><a href="#" class="footer-link">Blog</a></li>
+                        <li><a href="#" class="footer-link">Work With Us</a></li>
+                        <li><a href="#" class="footer-link">Investor Relations</a></li>
+                        <li><a href="#" class="footer-link">Report Fraud</a></li>
+                        <li><a href="#" class="footer-link">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4 class="footer-column-title">Zomaverse</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="#" class="footer-link">Zomato</a></li>
+                        <li><a href="#" class="footer-link">Blinkit</a></li>
+                        <li><a href="#" class="footer-link">Feeding India</a></li>
+                        <li><a href="#" class="footer-link">Hyperpure</a></li>
+                        <li><a href="#" class="footer-link">Zomaland</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4 class="footer-column-title">For Restaurants</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="#" class="footer-link">Partner With Us</a></li>
+                        <li><a href="#" class="footer-link">Apps For You</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4 class="footer-column-title">Learn More</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                        <li><a href="#" class="footer-link">Security Terms</a></li>
+                        <li><a href="#" class="footer-link">Terms of Service</a></li>
+                        <li><a href="#" class="footer-link">Sitemap</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column social-column">
+                    <h4 class="footer-column-title">Social Links</h4>
+                    <div class="social-icons-wrapper">
+                        <a href="#" class="social-icon" aria-label="LinkedIn Profile"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#" class="social-icon" aria-label="Instagram Profile"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-icon" aria-label="Twitter Profile"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" class="social-icon" aria-label="YouTube Channel"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" class="social-icon" aria-label="Facebook Page"><i class="fa-brands fa-facebook"></i></a>
+                    </div>
+                    
+                    <div class="footer-store-badges">
+                        <a href="#"><img src="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcT1IXDrlEyAfYcEp-hVVl8FUk1H0HbqGPDPDgAQ8Ztp-vD-EsTwp9-Ba38WjCg9I7Feh7KWuvpOI0QvZK8" alt="Download on Android Store" class="footer-store-img"></a>
+                        <a href="#"><img src="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcQm3Hotunw2DktFtpKxrWhX11jBoEW8x_rMBj5Uy3rPakMyW2ErwVxFUOy3v7gd1iNALskBTfTEqdGYvxA" alt="Download on iOS Store" class="footer-store-img"></a>
+                    </div>
+                </div>
+            </nav>
+
+            <hr class="footer-divider">
+
+            <div class="footer-bottom-row">
+                <p class="copyright-text">
+                    By continuing past this page, you agree to our Terms of Service, Cookie Policy, Privacy Policy and Content Policies. All trademarks are properties of their respective owners. 2026 © Zomato™ Ltd. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

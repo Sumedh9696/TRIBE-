@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Sumedh's World</title>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- TOP LEFT BRAND -->
+<div id="brand">SUMEDH'S<br>WORLD</div>
+
+<!-- TOP RIGHT MENU -->
+<button id="menu-btn" onclick="toggleMenu()">☰</button>
+<nav id="menu" class="hidden">
+  <button class="menu-x" onclick="toggleMenu()">✕</button>
+  <a onclick="goTo(0);toggleMenu()">🏠 Intro</a>
+  <a onclick="goTo(1);toggleMenu()">📜 About</a>
+  <a onclick="goTo(2);toggleMenu()">⚔️ Skills</a>
+  <a onclick="goTo(3);toggleMenu()">💼 Experience</a>
+  <a onclick="goTo(4);toggleMenu()">🏗️ Projects</a>
+  <a onclick="goTo(5);toggleMenu()">📬 Contact</a>
+</nav>
+
+<!-- DRAG HINT -->
+<div id="drag-hint">
+  <div id="drag-icon">☜</div>
+  <div id="drag-text">DRAG TO EXPLORE</div>
+</div>
+
+<!-- STORY TEXT (appears as you drag) -->
+<div id="story-text"></div>
+
+<!-- MAIN CANVAS -->
+<canvas id="c"></canvas>
+
+<!-- DARK MODE TOGGLE -->
+<button id="dark-btn" onclick="toggleDark()">☾</button>
+
+<!-- SECTION DOTS (right side) -->
+<div id="section-dots">
+  <div class="dot active" onclick="goTo(0)" title="Intro"></div>
+  <div class="dot" onclick="goTo(1)" title="About"></div>
+  <div class="dot" onclick="goTo(2)" title="Skills"></div>
+  <div class="dot" onclick="goTo(3)" title="Experience"></div>
+  <div class="dot" onclick="goTo(4)" title="Projects"></div>
+  <div class="dot" onclick="goTo(5)" title="Contact"></div>
+</div>
+
+<!-- POPUP CARD (appears when clicking objects) -->
+<div id="card" class="hidden">
+  <div class="card-inner">
+    <button class="card-close" onclick="closeCard()">✕</button>
+    <div class="card-icon" id="card-icon">🏠</div>
+    <h2 class="card-title" id="card-title">Title</h2>
+    <div class="card-body" id="card-body"></div>
+    <div class="card-foot" id="card-foot"></div>
+  </div>
+</div>
+
+<!-- LOADING -->
+<div id="loading">
+  <div class="ld-inner">
+    <div class="ld-globe">🌍</div>
+    <div class="ld-name">SUMEDH'S WORLD</div>
+    <div class="ld-bar"><div id="ld-fill"></div></div>
+    <div class="ld-msg" id="ld-msg">Building your world…</div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
